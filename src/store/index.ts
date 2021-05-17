@@ -1,8 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-// ...
+import userReducer from "../reducer/user";
 
 export const store = configureStore({
-  reducer: {},
+  reducer: { user: userReducer },
+  devTools: process.env.NODE_ENV !== "production",
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

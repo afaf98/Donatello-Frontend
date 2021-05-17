@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { User } from "../api/auth";
-import { login, token } from "../models/user.interface";
+import { ILogin } from "../models/user.interface";
 
 const { useForm } = require("react-hook-form");
 
@@ -8,7 +8,7 @@ export default function Signup() {
   const { register, handleSubmit, errors } = useForm();
   const [token, setToken] = useState<string>();
 
-  const onSubmit = async (data: login): Promise<any> => {
+  const onSubmit = async (data: ILogin): Promise<void> => {
     console.log(data);
     const response = await User.login(data);
     console.log("response", response);

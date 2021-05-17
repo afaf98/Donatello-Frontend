@@ -1,21 +1,30 @@
-export interface body {
-  firstName?: string;
-  lastName?: string;
+export interface ISignUp {
+  firstName: string;
+  lastName: string;
   email: string;
   password: string;
-  bankAccount?: string;
+  bankAccount: string;
 }
-export interface responseBody extends body {
+export interface IUser {
   id: string;
+  email: string;
+  bankAccount: string;
+  lastName: string;
+  firstName: string;
   updatedAt: string;
   createdAt: string;
 }
-export interface login {
+export interface ILogin {
   email: string;
   password: string;
 }
-export interface token {
+export interface IToken {
   token: string;
+}
+export interface IUserState {
+  token: string | null;
+  user: IUser | null;
+  message: string | null;
 }
 /*
 {
