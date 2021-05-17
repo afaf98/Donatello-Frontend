@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { User } from "../api/auth";
 import { ILogin } from "../models/user.interface";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { selectUser } from "../selectors/user";
+import { loginSuccess } from "../actions/user";
 
 export default function Signup() {
   const {
@@ -13,13 +14,13 @@ export default function Signup() {
   } = useForm();
   const user = useSelector(selectUser);
   console.log("user", user);
-  const [token, setToken] = useState<string>();
+  const dispatch = useDispatch();
 
   const onSubmit = async (data: ILogin): Promise<void> => {
     console.log(data);
     const response = await User.login(data);
     console.log("response", response);
-    setToken(response.token);
+    dispatch(loginSuccess(response));
   };
 
   return (
