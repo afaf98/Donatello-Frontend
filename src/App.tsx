@@ -1,6 +1,6 @@
 import "./App.css";
 import Login from "./Components/Login";
-const React = require("react");
+import React from "react";
 
 function App() {
   return (

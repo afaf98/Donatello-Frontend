@@ -1,11 +1,18 @@
 import React, { useState } from "react";
 import { User } from "../api/auth";
 import { ILogin } from "../models/user.interface";
-
-const { useForm } = require("react-hook-form");
+import { useSelector } from "react-redux";
+import { useForm } from "react-hook-form";
+import { selectUser } from "../selectors/user";
 
 export default function Signup() {
-  const { register, handleSubmit, errors } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const user = useSelector(selectUser);
+  console.log("user", user);
   const [token, setToken] = useState<string>();
 
   const onSubmit = async (data: ILogin): Promise<void> => {
@@ -24,7 +31,6 @@ export default function Signup() {
         <input
           type="email"
           placeholder="Enter Email"
-          name="email"
           {...register("email", { required: true })}
         />
         {errors && <div>Email is required.</div>}
@@ -34,7 +40,6 @@ export default function Signup() {
         <input
           type="password"
           placeholder="Enter Password"
-          name="password"
           {...register("password", { required: true })}
         />
         {errors && <div>Password is required.</div>}
