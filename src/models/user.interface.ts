@@ -26,6 +26,9 @@ export interface IUserState {
   user: IUser | null;
   message: string | null;
 }
+export interface IMassage {
+  message: string;
+}
 /*
 {
     "id": "8fa83801-c4a4-41d2-b5a2-1d0812c363e6",
