@@ -18,7 +18,7 @@ const requests = {
 export const User = {
   signUp: (userData: ISignUp): Promise<IUser> =>
     requests.post("/users/", userData),
-  login: (userData: ILogin): Promise<IToken> =>
+  login: (userData: ILogin): Promise<IUser> =>
     requests.post(`/login`, userData),
   // createPost: (post: PostType): Promise<PostType> =>
   //   requests.post("posts", post),

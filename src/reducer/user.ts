@@ -14,7 +14,17 @@ export default function reducer(
 ) {
   switch (action.type) {
     case "LOGIN_SUCCESS": {
-      const newState = { ...state, token: action.payload.token };
+      const newState = {
+        ...state,
+        user: {
+          firstName: action.payload.firstName,
+          lastName: action.payload.lastName,
+          email: action.payload.email,
+          bankAccount: action.payload.bankAccount,
+        },
+        message: action.payload.message,
+        token: action.payload.token,
+      };
       return newState;
     }
     case "LOGIN_FAILED": {

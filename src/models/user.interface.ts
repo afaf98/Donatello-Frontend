@@ -6,13 +6,14 @@ export interface ISignUp {
   bankAccount: string;
 }
 export interface IUser {
-  id: string;
   email: string;
+  token?: string;
+  password?: string;
   bankAccount: string;
   lastName: string;
   firstName: string;
-  updatedAt: string;
-  createdAt: string;
+  // updatedAt: string;
+  // createdAt: string;
 }
 export interface ILogin {
   email: string;

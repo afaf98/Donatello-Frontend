@@ -1,8 +1,8 @@
-import { IMassage, IToken } from "../models/user.interface";
+import { IMassage, IUser } from "../models/user.interface";
 
 interface ILoginSuccess {
   type: "LOGIN_SUCCESS";
-  payload: IToken;
+  payload: IUser;
 }
 interface ILoginFailed {
   type: "LOGIN_FAILED";
@@ -13,7 +13,7 @@ interface ILogout {
   payload: IMassage;
 }
 
-export const loginSuccess = (user: IToken): ILoginSuccess => ({
+export const loginSuccess = (user: IUser): ILoginSuccess => ({
   type: "LOGIN_SUCCESS",
   payload: user,
 });

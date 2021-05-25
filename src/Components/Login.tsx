@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { User } from "../api/auth";
 import { ILogin } from "../models/user.interface";
 import { useSelector, useDispatch } from "react-redux";
@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { selectUser } from "../selectors/user";
 import { loginSuccess } from "../actions/user";
 
-export default function Signup() {
+export default function Login() {
   const {
     register,
     handleSubmit,
