@@ -1,24 +1,32 @@
 import React from "react";
 import { User } from "../api/auth";
 import { ISignUp } from "../models/user.interface";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
-import { selectUser } from "../selectors/user";
-import { loginSuccess } from "../actions/user";
+import { loginFailed, loginSuccess } from "../actions/user";
+import { useHistory } from "react-router";
 
 export default function Signup() {
+  const token = localStorage.getItem("token");
+  const history = useHistory();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const user = useSelector(selectUser);
   const dispatch = useDispatch();
+  if (token) {
+    history.push("/projects");
+  }
 
   const onSubmit = async (data: ISignUp): Promise<void> => {
-    console.log(data);
     const response = await User.signUp(data);
-    dispatch(loginSuccess(response));
+    if (response.token) {
+      dispatch(loginSuccess(response));
+      localStorage.setItem("token", response.token);
+      return;
+    }
+    dispatch(loginFailed({ message: response.message }));
   };
 
   return (

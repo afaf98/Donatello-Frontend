@@ -1,3 +1,5 @@
+import { isTypeQueryNode } from "typescript";
+
 export interface ISignUp {
   firstName: string;
   lastName: string;
@@ -30,6 +32,8 @@ export interface IUserState {
 export interface IMassage {
   message: string;
 }
+
+export interface IResponse extends IUser, IMassage {}
 /*
 {
     "id": "8fa83801-c4a4-41d2-b5a2-1d0812c363e6",

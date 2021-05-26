@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from "axios";
-import { ISignUp, IUser, ILogin, IToken } from "../models/user.interface";
+import { ISignUp, ILogin, IResponse } from "../models/user.interface";
 
 const instance = axios.create({
   baseURL: "http://localhost:3000",
@@ -16,9 +16,9 @@ const requests = {
 };
 
 export const User = {
-  signUp: (userData: ISignUp): Promise<IUser> =>
+  signUp: (userData: ISignUp): Promise<IResponse> =>
     requests.post("/users/", userData),
-  login: (userData: ILogin): Promise<IUser> =>
+  login: (userData: ILogin): Promise<IResponse> =>
     requests.post(`/login`, userData),
   // createPost: (post: PostType): Promise<PostType> =>
   //   requests.post("posts", post),
