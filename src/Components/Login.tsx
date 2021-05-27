@@ -3,6 +3,7 @@ import { User } from "../api/auth";
 import { ILogin } from "../models/user.interface";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
+
 import { loginFailed, loginSuccess } from "../actions/user";
 import { useHistory } from "react-router";
 
@@ -27,7 +28,7 @@ export default function Login() {
       localStorage.setItem("token", response.token);
       return;
     }
-    dispatch(loginFailed({ message: response.message }));
+    dispatch(loginFailed({ message: "Something went wrong!" }));
   };
 
   return (

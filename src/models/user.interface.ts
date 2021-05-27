@@ -1,5 +1,3 @@
-import { isTypeQueryNode } from "typescript";
-
 export interface ISignUp {
   firstName: string;
   lastName: string;
