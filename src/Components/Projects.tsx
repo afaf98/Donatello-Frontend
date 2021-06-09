@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 import moment from "moment";
 import { useDispatch, useSelector } from "react-redux";
-import { getProjects } from "../actions/projects";
-import { Project } from "../api/projects";
+import { fetchProjects } from "../actions/projects";
 import { IProjectWithTags } from "../models/projects.interface";
 import { selectProjects } from "../selectors/projects";
 
@@ -11,12 +10,7 @@ export default function Projects() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await Project.getProjects();
-      console.log("response", response);
-      dispatch(getProjects(response.sortedProjects));
-    };
-    fetchData();
+    dispatch(fetchProjects);
   }, []);
 
   return (
@@ -25,6 +19,7 @@ export default function Projects() {
         projectsState.projects.map((project: IProjectWithTags) => {
           return (
             <div key={project.id}>
+              ---------------------------------------------------------
               <h3>{project.projectName}</h3>
               <p>{project.projectDescription}</p>
               <b>Amount collected : {project.totalDonationAmount} </b>
